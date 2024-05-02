@@ -19,6 +19,12 @@ pipeline{
 
                         }
                             }
+             stage("Failed-Noti"){
+                       steps{
+                                                                  slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#ford', color: 'warning', failOnError: true, message: 'Build is Failed', teamDomain: 'DEVOPS', tokenCredentialId: 'Ford', username: 'SIRI'
+
+                             }
+                                 }
              
              stage("Deployment"{
                      steps{
@@ -38,8 +44,7 @@ fi'''
                       stage("Notification"){
                                steps{
                                       slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#ford', color: 'good', failOnError: false, message: 'Build is successfully done', teamDomain: 'DEVOPS', tokenCredentialId: 'Ford', username: 'SIRI'
-                                      slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#ford', color: 'warning', failOnError: true, message: 'Build is Failed', teamDomain: 'DEVOPS', tokenCredentialId: 'Ford', username: 'SIRI'
-                                    
+                                                                         
    }
                                           }
        
