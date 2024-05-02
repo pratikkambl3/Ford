@@ -36,14 +36,7 @@ echo "Deployed to UAT SERVER"
 fi'''
                             }
                                  }
-                      stage("notification"){
-                               steps{
-                             slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#ford', color: 'good', failOnError: false, message: 'build is successful', teamDomain: 'DEVOPS', tokenCredentialId: 'Ford1', username: 'SIRI'                                                                         
-   }
-
-                      
-       
-
+  
 
            }
 }
