@@ -19,15 +19,11 @@ pipeline{
 
                         }
                             }
-             stage("Failed-Noti"){
-                       steps{
-                                                 slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#ford', color: 'danger', failOnError: true, message: 'build is failed', teamDomain: 'DEVOPS', tokenCredentialId: 'Ford1', username: 'SIRI'
-                             }
-                                 }
+                                 
              
-             stage("Deployment"{
+             stage("Deployment"){
                      steps{
-                 
+                           slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#ford', color: 'warning', failOnError: true, message: 'Build is Failed', teamDomain: 'DEVOPS', tokenCredentialId: 'Ford1', username: 'SIRI'
                         sh '''if [ $ENV = "DEV" ];then
 cp target/Ford.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps
 echo "Deployed to DEV SERVER"
@@ -44,7 +40,8 @@ fi'''
                                steps{
                              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#ford', color: 'good', failOnError: false, message: 'build is successful', teamDomain: 'DEVOPS', tokenCredentialId: 'Ford1', username: 'SIRI'                                                                         
    }
-                                          }
+
+                      
        
 
 
